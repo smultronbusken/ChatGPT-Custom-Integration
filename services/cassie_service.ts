@@ -15,6 +15,11 @@ class CassieService {
         })
         return records
     }
+
+    public async create(data: Record<string, any>) {
+        const record = await this.pbClient.collection('cassie').create(data);
+        return record;
+    }
 }
 
 export default CassieService
