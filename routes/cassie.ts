@@ -1,4 +1,3 @@
-// authors.ts
 import { Hono } from '@hono/hono';
 import CassieService from "../services/cassie_service.ts";
 import { Env } from "../types.ts";
