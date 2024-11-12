@@ -20,6 +20,11 @@ class CassieService {
         const record = await this.pbClient.collection('cassie').create(data);
         return record;
     }
+
+    public async delete(id: string) {
+        const res = await this.pbClient.collection('cassie').delete(id);
+        return res;
+    }
 }
 
 export default CassieService

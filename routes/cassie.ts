@@ -12,10 +12,7 @@ function cassieRoute(): Hono<Env> {
     }).post('/', async (c) => {
         const cassieService = new CassieService(c);
 
-        // Parse the request body
         const data = await c.req.json();
-
-        // Validate the 'name' field
         if (!data.name) {
             return c.json({ error: 'Name field is required.' }, 400);
         }
@@ -27,7 +24,23 @@ function cassieRoute(): Hono<Env> {
             console.error('Error creating record:', error);
             return c.json({ error: 'Failed to create record.' }, 500);
         }
-    });
+    }).delete('/', async (c) => {
+        const cassieService = new CassieService(c);
+
+        const data = await c.req.json();
+        if (!data.id) {
+            return c.json({ error: 'Id field is required.' }, 400);
+        }
+
+        try {
+            const res = await cassieService.delete(data.id);
+            return c.json(res);
+        } catch (error) {
+            console.error('Error creating record:', error);
+            return c.json({ error: 'Failed to create record.' }, 500);
+        }
+
+    })
 
     return app;
 }

@@ -1,7 +1,7 @@
 {
   "tasks": {
     "dev": "deno run --env-file --watch --allow-all  mod.ts",
-    "start": "deno run --allow-net --allow-read --allow-env main.ts --watch mod.ts"
+    "start": "deno run --allow-net --allow-read --allow-env mod.ts --watch mod.ts"
   },
   "imports": {
     "@hono/hono": "jsr:@hono/hono@^4.6.9",
