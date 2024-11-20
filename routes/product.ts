@@ -1,16 +1,16 @@
 import { Hono } from '@hono/hono';
-import CassieService from "../services/cassie_service.ts";
+import ProductService from "../services/product_service.ts";
 import { Env } from "../types.ts";
 
-function cassieRoute(): Hono<Env> {
+function productRoute(): Hono<Env> {
     const app = new Hono<Env>()
 
     app.get('/', async (c) => {
-        const cassieService = new CassieService(c)
-        const res = await cassieService.list()
+        const productService = new ProductService(c)
+        const res = await productService.list()
         return c.json(res)
     }).post('/', async (c) => {
-        const cassieService = new CassieService(c);
+        const productService = new ProductService(c);
 
         const data = await c.req.json();
         if (!data.name) {
@@ -18,14 +18,14 @@ function cassieRoute(): Hono<Env> {
         }
 
         try {
-            const res = await cassieService.create(data);
+            const res = await productService.create(data);
             return c.json(res, 201);
         } catch (error) {
             console.error('Error creating record:', error);
             return c.json({ error: 'Failed to create record.' }, 500);
         }
     }).delete('/', async (c) => {
-        const cassieService = new CassieService(c);
+        const productService = new ProductService(c);
 
         const data = await c.req.json();
         if (!data.id) {
@@ -33,7 +33,7 @@ function cassieRoute(): Hono<Env> {
         }
 
         try {
-            const res = await cassieService.delete(data.id);
+            const res = await productService.delete(data.id);
             return c.json(res);
         } catch (error) {
             console.error('Error creating record:', error);
@@ -45,4 +45,4 @@ function cassieRoute(): Hono<Env> {
     return app;
 }
 
-export default cassieRoute
+export default productRoute

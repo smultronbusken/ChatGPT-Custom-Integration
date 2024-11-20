@@ -4,7 +4,7 @@ import PocketBase from "pocketbase"
 import { Hono } from "@hono/hono"
 import { basicAuth } from "@hono/hono/basic-auth"
 import { logger } from "@hono/hono/logger"
-import cassieRoute from "./routes/cassie.ts";
+import productRoute from "./routes/product.ts";
 import { pocketbaseMiddleware } from "./middleware/pocketbase.ts";
 import { Env } from "./types.ts";
 
@@ -15,7 +15,7 @@ setUpEndpoints(app)
 Deno.serve({ port: 8080 }, app.fetch)
 
 function setUpEndpoints(app: Hono<Env>) {
-    app.route('/cassie', cassieRoute())
+    app.route('/product', productRoute())
 }
 
 function setUpHono() {
