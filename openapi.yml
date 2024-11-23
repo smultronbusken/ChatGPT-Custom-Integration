@@ -1,0 +1,700 @@
+openapi: 3.1.0
+info:
+  title: Manufacturing Company Internal API
+  version: 1.0.0
+  description: API for managing products, orders, and meeting room bookings within the company.
+servers:
+  - url: https://api.company.com
+
+paths:
+  /products:
+    get:
+      summary: List all products
+      operationId: listProducts
+      description: Retrieve a list of all products.
+      parameters:
+        - name: category
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Filter products by category.
+      responses:
+        '200':
+          description: A list of products.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+    post:
+      summary: Create a new product
+      operationId: createProduct
+      description: Add a new product to the system.
+      requestBody:
+        description: Product object that needs to be added.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInput'
+      responses:
+        '201':
+          description: Product created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: Invalid input.
+  /products/{productId}:
+    get:
+      summary: Get product details
+      operationId: getProductById
+      description: Retrieve details of a specific product by ID.
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the product to retrieve.
+      responses:
+        '200':
+          description: Product details retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Product not found.
+    put:
+      summary: Update a product
+      operationId: updateProduct
+      description: Update an existing product by ID.
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the product to update.
+      requestBody:
+        description: Updated product object.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInput'
+      responses:
+        '200':
+          description: Product updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: Invalid input.
+        '404':
+          description: Product not found.
+    delete:
+      summary: Delete a product
+      operationId: deleteProduct
+      description: Delete an existing product by ID.
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the product to delete.
+      responses:
+        '204':
+          description: Product deleted successfully.
+        '404':
+          description: Product not found.
+
+  /orders:
+    get:
+      summary: List all orders
+      operationId: listOrders
+      description: Retrieve a list of all orders.
+      parameters:
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Filter orders by status.
+      responses:
+        '200':
+          description: A list of orders.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+    post:
+      summary: Create a new order
+      operationId: createOrder
+      description: Place a new order.
+      requestBody:
+        description: Order object that needs to be added.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderInput'
+      responses:
+        '201':
+          description: Order created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: Invalid input.
+  /orders/{orderId}:
+    get:
+      summary: Get order details
+      operationId: getOrderById
+      description: Retrieve details of a specific order by ID.
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the order to retrieve.
+      responses:
+        '200':
+          description: Order details retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: Order not found.
+    put:
+      summary: Update an order
+      operationId: updateOrder
+      description: Update an existing order by ID.
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the order to update.
+      requestBody:
+        description: Updated order object.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderInput'
+      responses:
+        '200':
+          description: Order updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: Invalid input.
+        '404':
+          description: Order not found.
+    delete:
+      summary: Delete an order
+      operationId: deleteOrder
+      description: Delete an existing order by ID.
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the order to delete.
+      responses:
+        '204':
+          description: Order deleted successfully.
+        '404':
+          description: Order not found.
+
+  /meetingRooms:
+    get:
+      summary: List all meeting rooms
+      operationId: listMeetingRooms
+      description: Retrieve a list of all meeting rooms.
+      responses:
+        '200':
+          description: A list of meeting rooms.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MeetingRoom'
+    post:
+      summary: Add a new meeting room
+      operationId: createMeetingRoom
+      description: Add a new meeting room to the system.
+      requestBody:
+        description: Meeting room object that needs to be added.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MeetingRoomInput'
+      responses:
+        '201':
+          description: Meeting room created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeetingRoom'
+        '400':
+          description: Invalid input.
+  /meetingRooms/{roomId}:
+    get:
+      summary: Get meeting room details
+      operationId: getMeetingRoomById
+      description: Retrieve details of a specific meeting room by ID.
+      parameters:
+        - name: roomId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the meeting room to retrieve.
+      responses:
+        '200':
+          description: Meeting room details retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeetingRoom'
+        '404':
+          description: Meeting room not found.
+    put:
+      summary: Update a meeting room
+      operationId: updateMeetingRoom
+      description: Update an existing meeting room by ID.
+      parameters:
+        - name: roomId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the meeting room to update.
+      requestBody:
+        description: Updated meeting room object.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MeetingRoomInput'
+      responses:
+        '200':
+          description: Meeting room updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeetingRoom'
+        '400':
+          description: Invalid input.
+        '404':
+          description: Meeting room not found.
+    delete:
+      summary: Delete a meeting room
+      operationId: deleteMeetingRoom
+      description: Delete an existing meeting room by ID.
+      parameters:
+        - name: roomId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the meeting room to delete.
+      responses:
+        '204':
+          description: Meeting room deleted successfully.
+        '404':
+          description: Meeting room not found.
+
+  /appointments:
+    get:
+      summary: List all appointments
+      operationId: listAppointments
+      description: Retrieve a list of all appointments.
+      parameters:
+        - name: roomId
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Filter appointments by meeting room ID.
+        - name: date
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+          description: Filter appointments by date.
+      responses:
+        '200':
+          description: A list of appointments.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Appointment'
+    post:
+      summary: Schedule a new appointment
+      operationId: createAppointment
+      description: Schedule a new appointment in a meeting room.
+      requestBody:
+        description: Appointment object that needs to be added.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppointmentInput'
+      responses:
+        '201':
+          description: Appointment scheduled successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+        '400':
+          description: Invalid input.
+        '409':
+          description: Time slot not available.
+  /appointments/{appointmentId}:
+    get:
+      summary: Get appointment details
+      operationId: getAppointmentById
+      description: Retrieve details of a specific appointment by ID.
+      parameters:
+        - name: appointmentId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the appointment to retrieve.
+      responses:
+        '200':
+          description: Appointment details retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+        '404':
+          description: Appointment not found.
+    put:
+      summary: Update an appointment
+      operationId: updateAppointment
+      description: Update an existing appointment by ID.
+      parameters:
+        - name: appointmentId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the appointment to update.
+      requestBody:
+        description: Updated appointment object.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppointmentInput'
+      responses:
+        '200':
+          description: Appointment updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+        '400':
+          description: Invalid input.
+        '404':
+          description: Appointment not found.
+        '409':
+          description: Time slot not available.
+    delete:
+      summary: Cancel an appointment
+      operationId: deleteAppointment
+      description: Cancel an existing appointment by ID.
+      parameters:
+        - name: appointmentId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the appointment to cancel.
+      responses:
+        '204':
+          description: Appointment cancelled successfully.
+        '404':
+          description: Appointment not found.
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the product.
+        name:
+          type: string
+          description: Name of the product.
+        category:
+          type: string
+          description: Category the product belongs to.
+        specifications:
+          type: string
+          description: Detailed specifications of the product.
+        price:
+          type: number
+          format: float
+          description: Price of the product.
+        stockQuantity:
+          type: integer
+          description: Number of units available in stock.
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the product was created.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the product was last updated.
+    ProductInput:
+      type: object
+      required:
+        - name
+        - category
+        - price
+      properties:
+        name:
+          type: string
+          description: Name of the product.
+        category:
+          type: string
+          description: Category the product belongs to.
+        specifications:
+          type: string
+          description: Detailed specifications of the product.
+        price:
+          type: number
+          format: float
+          description: Price of the product.
+        stockQuantity:
+          type: integer
+          description: Number of units available in stock.
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the order.
+        customerId:
+          type: string
+          description: Unique identifier for the customer.
+        orderDate:
+          type: string
+          format: date
+          description: Date when the order was placed.
+        status:
+          type: string
+          description: Current status of the order.
+          enum:
+            - pending
+            - processing
+            - shipped
+            - delivered
+            - cancelled
+        items:
+          type: array
+          description: List of product IDs in the order.
+          items:
+            type: string
+            description: Unique identifier for the product.
+        totalAmount:
+          type: number
+          format: float
+          description: Total amount of the order.
+        deliveryDate:
+          type: string
+          format: date
+          description: Expected or actual delivery date.
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the order was created.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the order was last updated.
+    OrderInput:
+      type: object
+      required:
+        - customerId
+        - items
+      properties:
+        customerId:
+          type: string
+          description: Unique identifier for the customer.
+        items:
+          type: array
+          description: List of product IDs to be ordered.
+          items:
+            type: string
+            description: Unique identifier for the product.
+        totalAmount:
+          type: number
+          format: float
+          description: Total amount of the order.
+        deliveryDate:
+          type: string
+          format: date
+          description: Expected delivery date.
+        status:
+          type: string
+          description: Current status of the order.
+          enum:
+            - pending
+            - processing
+            - shipped
+            - delivered
+            - cancelled
+    MeetingRoom:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the meeting room.
+        name:
+          type: string
+          description: Name of the meeting room.
+        location:
+          type: string
+          description: Physical location of the meeting room.
+        capacity:
+          type: integer
+          description: Number of people the room can accommodate.
+        features:
+          type: array
+          description: List of features available in the room.
+          items:
+            type: string
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the meeting room was added.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the meeting room was last updated.
+    MeetingRoomInput:
+      type: object
+      required:
+        - name
+        - location
+        - capacity
+      properties:
+        name:
+          type: string
+          description: Name of the meeting room.
+        location:
+          type: string
+          description: Physical location of the meeting room.
+        capacity:
+          type: integer
+          description: Number of people the room can accommodate.
+        features:
+          type: array
+          description: List of features available in the room.
+          items:
+            type: string
+    Appointment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the appointment.
+        roomId:
+          type: string
+          description: Unique identifier for the meeting room.
+        organizerId:
+          type: string
+          description: Unique identifier for the organizer.
+        attendees:
+          type: array
+          description: List of attendee IDs.
+          items:
+            type: string
+        purpose:
+          type: string
+          description: Purpose or agenda of the meeting.
+        date:
+          type: string
+          format: date
+          description: Date of the appointment.
+        startTime:
+          type: string
+          format: date-time
+          description: Start time in ISO 8601 format.
+        endTime:
+          type: string
+          format: date-time
+          description: End time in ISO 8601 format.
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the appointment was created.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the appointment was last updated.
+    AppointmentInput:
+      type: object
+      required:
+        - roomId
+        - organizerId
+        - date
+        - startTime
+        - endTime
+      properties:
+        roomId:
+          type: string
+          description: Unique identifier for the meeting room.
+        organizerId:
+          type: string
+          description: Unique identifier for the organizer.
+        attendees:
+          type: array
+          description: List of attendee IDs.
+          items:
+            type: string
+        purpose:
+          type: string
+          description: Purpose or agenda of the meeting.
+        date:
+          type: string
+          format: date
+          description: Date of the appointment.
+        startTime:
+          type: string
+          format: date-time
+          description: Start time in ISO 8601 format.
+        endTime:
+          type: string
+          format: date-time
+          description: End time in ISO 8601 format.

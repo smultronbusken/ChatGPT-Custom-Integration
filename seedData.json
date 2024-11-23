@@ -1,0 +1,60 @@
+{
+    "products": [
+      {
+        "id": "product00000001",
+        "name": "Widget A",
+        "category": "Electronics",
+        "specifications": "High-performance widget with advanced features.",
+        "price": 99.99,
+        "stockQuantity": 50
+      },
+      {
+        "id": "product00000002",
+        "name": "Gadget B",
+        "category": "Accessories",
+        "specifications": "Compact gadget suitable for daily use.",
+        "price": 49.99,
+        "stockQuantity": 100
+      }
+    ],
+    "orders": [
+      {
+        "id": "order0000000001",
+        "customerId": "customer_1",
+        "orderDate": "2023-09-15",
+        "status": "processing",
+        "items": ["product00000001", "product00000002"],
+        "totalAmount": 249.97,
+        "deliveryDate": "2023-09-20"
+      }
+    ],
+    "meeting_rooms": [
+      {
+        "id": "room00000000001",
+        "name": "Conference Room A",
+        "location": "First Floor",
+        "capacity": 10,
+        "features": ["Projector", "Whiteboard"]
+      },
+      {
+        "id": "room00000000002",
+        "name": "Meeting Room B",
+        "location": "Second Floor",
+        "capacity": 5,
+        "features": ["Teleconferencing"]
+      }
+    ],
+    "appointments": [
+      {
+        "id": "appt00000000001",
+        "roomId": "room00000000001",
+        "organizerId": "organizer_1",
+        "attendees": ["employee_1", "employee_2"],
+        "purpose": "Project Kickoff",
+        "date": "2023-09-20",
+        "startTime": "2023-09-20T10:00:00Z",
+        "endTime": "2023-09-20T11:00:00Z"
+      }
+    ]
+  }
+  
