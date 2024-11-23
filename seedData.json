@@ -15,6 +15,110 @@
         "specifications": "Compact gadget suitable for daily use.",
         "price": 49.99,
         "stockQuantity": 100
+      },
+      {
+        "id": "product00000003",
+        "name": "Device C",
+        "category": "Electronics",
+        "specifications": "Multi-purpose device with smart capabilities.",
+        "price": 199.99,
+        "stockQuantity": 30
+      },
+      {
+        "id": "product00000004",
+        "name": "Tool D",
+        "category": "Hardware",
+        "specifications": "Durable tool for industrial use.",
+        "price": 79.99,
+        "stockQuantity": 75
+      },
+      {
+        "id": "product00000005",
+        "name": "Equipment E",
+        "category": "Machinery",
+        "specifications": "Heavy-duty equipment for construction.",
+        "price": 999.99,
+        "stockQuantity": 10
+      },
+      {
+        "id": "product00000006",
+        "name": "Accessory F",
+        "category": "Accessories",
+        "specifications": "Useful accessory for various devices.",
+        "price": 19.99,
+        "stockQuantity": 200
+      },
+      {
+        "id": "product00000007",
+        "name": "Component G",
+        "category": "Electronics",
+        "specifications": "Essential component for electronics assembly.",
+        "price": 5.99,
+        "stockQuantity": 500
+      },
+      {
+        "id": "product00000008",
+        "name": "Instrument H",
+        "category": "Tools",
+        "specifications": "Precision instrument for measurements.",
+        "price": 149.99,
+        "stockQuantity": 25
+      },
+      {
+        "id": "product00000009",
+        "name": "Material I",
+        "category": "Raw Materials",
+        "specifications": "High-quality material for manufacturing.",
+        "price": 299.99,
+        "stockQuantity": 40
+      },
+      {
+        "id": "product00000010",
+        "name": "Apparatus J",
+        "category": "Machinery",
+        "specifications": "Advanced apparatus for specialized tasks.",
+        "price": 1299.99,
+        "stockQuantity": 5
+      },
+      {
+        "id": "product00000011",
+        "name": "Device K",
+        "category": "Electronics",
+        "specifications": "Next-gen device with enhanced features.",
+        "price": 249.99,
+        "stockQuantity": 20
+      },
+      {
+        "id": "product00000012",
+        "name": "Tool L",
+        "category": "Hardware",
+        "specifications": "Ergonomic tool for comfort and efficiency.",
+        "price": 59.99,
+        "stockQuantity": 80
+      },
+      {
+        "id": "product00000013",
+        "name": "Gadget M",
+        "category": "Accessories",
+        "specifications": "Stylish gadget with multiple functions.",
+        "price": 39.99,
+        "stockQuantity": 150
+      },
+      {
+        "id": "product00000014",
+        "name": "Material N",
+        "category": "Raw Materials",
+        "specifications": "Eco-friendly material for sustainable manufacturing.",
+        "price": 199.99,
+        "stockQuantity": 60
+      },
+      {
+        "id": "product00000015",
+        "name": "Instrument O",
+        "category": "Tools",
+        "specifications": "High-precision instrument for professionals.",
+        "price": 189.99,
+        "stockQuantity": 15
       }
     ],
     "orders": [
@@ -24,8 +128,134 @@
         "orderDate": "2023-09-15",
         "status": "processing",
         "items": ["product00000001", "product00000002"],
-        "totalAmount": 249.97,
+        "totalAmount": 149.98,
         "deliveryDate": "2023-09-20"
+      },
+      {
+        "id": "order0000000002",
+        "customerId": "customer_2",
+        "orderDate": "2023-09-16",
+        "status": "pending",
+        "items": ["product00000003", "product00000004"],
+        "totalAmount": 279.98,
+        "deliveryDate": "2023-09-25"
+      },
+      {
+        "id": "order0000000003",
+        "customerId": "customer_3",
+        "orderDate": "2023-09-17",
+        "status": "shipped",
+        "items": ["product00000005"],
+        "totalAmount": 999.99,
+        "deliveryDate": "2023-09-22"
+      },
+      {
+        "id": "order0000000004",
+        "customerId": "customer_4",
+        "orderDate": "2023-09-18",
+        "status": "delivered",
+        "items": ["product00000006", "product00000007", "product00000008"],
+        "totalAmount": 175.97,
+        "deliveryDate": "2023-09-23"
+      },
+      {
+        "id": "order0000000005",
+        "customerId": "customer_5",
+        "orderDate": "2023-09-19",
+        "status": "cancelled",
+        "items": ["product00000009"],
+        "totalAmount": 299.99,
+        "deliveryDate": "2023-09-28"
+      },
+      {
+        "id": "order0000000006",
+        "customerId": "customer_6",
+        "orderDate": "2023-09-20",
+        "status": "processing",
+        "items": ["product00000010", "product00000001"],
+        "totalAmount": 1399.98,
+        "deliveryDate": "2023-09-30"
+      },
+      {
+        "id": "order0000000007",
+        "customerId": "customer_7",
+        "orderDate": "2023-09-21",
+        "status": "processing",
+        "items": ["product00000002", "product00000003", "product00000004"],
+        "totalAmount": 349.97,
+        "deliveryDate": "2023-10-01"
+      },
+      {
+        "id": "order0000000008",
+        "customerId": "customer_8",
+        "orderDate": "2023-09-22",
+        "status": "pending",
+        "items": ["product00000005", "product00000006"],
+        "totalAmount": 1019.98,
+        "deliveryDate": "2023-10-05"
+      },
+      {
+        "id": "order0000000009",
+        "customerId": "customer_9",
+        "orderDate": "2023-09-23",
+        "status": "processing",
+        "items": ["product00000007", "product00000008"],
+        "totalAmount": 155.98,
+        "deliveryDate": "2023-10-03"
+      },
+      {
+        "id": "order0000000010",
+        "customerId": "customer_10",
+        "orderDate": "2023-09-24",
+        "status": "pending",
+        "items": ["product00000009", "product00000010"],
+        "totalAmount": 1599.98,
+        "deliveryDate": "2023-10-10"
+      },
+      {
+        "id": "order0000000011",
+        "customerId": "customer_11",
+        "orderDate": "2023-09-25",
+        "status": "shipped",
+        "items": ["product00000011"],
+        "totalAmount": 249.99,
+        "deliveryDate": "2023-10-02"
+      },
+      {
+        "id": "order0000000012",
+        "customerId": "customer_12",
+        "orderDate": "2023-09-26",
+        "status": "delivered",
+        "items": ["product00000012", "product00000013"],
+        "totalAmount": 99.98,
+        "deliveryDate": "2023-10-04"
+      },
+      {
+        "id": "order0000000013",
+        "customerId": "customer_13",
+        "orderDate": "2023-09-27",
+        "status": "processing",
+        "items": ["product00000014", "product00000015"],
+        "totalAmount": 389.98,
+        "deliveryDate": "2023-10-07"
+      },
+      {
+        "id": "order0000000014",
+        "customerId": "customer_14",
+        "orderDate": "2023-09-28",
+        "status": "pending",
+        "items": ["product00000001", "product00000005", "product00000009"],
+        "totalAmount": 1399.97,
+        "deliveryDate": "2023-10-15"
+      },
+      {
+        "id": "order0000000015",
+        "customerId": "customer_15",
+        "orderDate": "2023-09-29",
+        "status": "processing",
+        "items": ["product00000002", "product00000006", "product00000010"],
+        "totalAmount": 1369.97,
+        "deliveryDate": "2023-10-12"
       }
     ],
     "meeting_rooms": [
@@ -42,6 +272,48 @@
         "location": "Second Floor",
         "capacity": 5,
         "features": ["Teleconferencing"]
+      },
+      {
+        "id": "room00000000003",
+        "name": "Board Room C",
+        "location": "Third Floor",
+        "capacity": 15,
+        "features": ["Video Conferencing", "Whiteboard"]
+      },
+      {
+        "id": "room00000000004",
+        "name": "Training Room D",
+        "location": "Fourth Floor",
+        "capacity": 20,
+        "features": ["Projector", "Computers"]
+      },
+      {
+        "id": "room00000000005",
+        "name": "Small Meeting Room E",
+        "location": "First Floor",
+        "capacity": 4,
+        "features": ["Whiteboard"]
+      },
+      {
+        "id": "room00000000006",
+        "name": "Workshop Room F",
+        "location": "Basement",
+        "capacity": 25,
+        "features": ["Workbenches", "Tools"]
+      },
+      {
+        "id": "room00000000007",
+        "name": "Executive Room G",
+        "location": "Top Floor",
+        "capacity": 8,
+        "features": ["Video Conferencing", "Luxurious Seating"]
+      },
+      {
+        "id": "room00000000008",
+        "name": "Open Space H",
+        "location": "Ground Floor",
+        "capacity": 30,
+        "features": ["Flexible Seating", "AV System"]
       }
     ],
     "appointments": [
@@ -54,6 +326,146 @@
         "date": "2023-09-20",
         "startTime": "2023-09-20T10:00:00Z",
         "endTime": "2023-09-20T11:00:00Z"
+      },
+      {
+        "id": "appt00000000002",
+        "roomId": "room00000000002",
+        "organizerId": "organizer_2",
+        "attendees": ["employee_3", "employee_4"],
+        "purpose": "Budget Meeting",
+        "date": "2023-09-21",
+        "startTime": "2023-09-21T09:00:00Z",
+        "endTime": "2023-09-21T10:30:00Z"
+      },
+      {
+        "id": "appt00000000003",
+        "roomId": "room00000000003",
+        "organizerId": "organizer_3",
+        "attendees": ["employee_5", "employee_6", "employee_7"],
+        "purpose": "Strategy Session",
+        "date": "2023-09-22",
+        "startTime": "2023-09-22T14:00:00Z",
+        "endTime": "2023-09-22T16:00:00Z"
+      },
+      {
+        "id": "appt00000000004",
+        "roomId": "room00000000004",
+        "organizerId": "organizer_4",
+        "attendees": ["employee_8", "employee_9"],
+        "purpose": "Training Workshop",
+        "date": "2023-09-23",
+        "startTime": "2023-09-23T08:00:00Z",
+        "endTime": "2023-09-23T12:00:00Z"
+      },
+      {
+        "id": "appt00000000005",
+        "roomId": "room00000000005",
+        "organizerId": "organizer_5",
+        "attendees": ["employee_10"],
+        "purpose": "One-on-One Meeting",
+        "date": "2023-09-24",
+        "startTime": "2023-09-24T15:00:00Z",
+        "endTime": "2023-09-24T15:30:00Z"
+      },
+      {
+        "id": "appt00000000006",
+        "roomId": "room00000000001",
+        "organizerId": "organizer_6",
+        "attendees": ["employee_11", "employee_12"],
+        "purpose": "Client Presentation",
+        "date": "2023-09-25",
+        "startTime": "2023-09-25T11:00:00Z",
+        "endTime": "2023-09-25T12:30:00Z"
+      },
+      {
+        "id": "appt00000000007",
+        "roomId": "room00000000002",
+        "organizerId": "organizer_7",
+        "attendees": ["employee_13", "employee_14", "employee_15"],
+        "purpose": "Design Review",
+        "date": "2023-09-26",
+        "startTime": "2023-09-26T13:00:00Z",
+        "endTime": "2023-09-26T14:00:00Z"
+      },
+      {
+        "id": "appt00000000008",
+        "roomId": "room00000000003",
+        "organizerId": "organizer_8",
+        "attendees": ["employee_16", "employee_17", "employee_18", "employee_19"],
+        "purpose": "Team Meeting",
+        "date": "2023-09-27",
+        "startTime": "2023-09-27T10:00:00Z",
+        "endTime": "2023-09-27T11:00:00Z"
+      },
+      {
+        "id": "appt00000000009",
+        "roomId": "room00000000004",
+        "organizerId": "organizer_9",
+        "attendees": ["employee_20", "employee_21"],
+        "purpose": "HR Training",
+        "date": "2023-09-28",
+        "startTime": "2023-09-28T09:00:00Z",
+        "endTime": "2023-09-28T11:00:00Z"
+      },
+      {
+        "id": "appt00000000010",
+        "roomId": "room00000000005",
+        "organizerId": "organizer_10",
+        "attendees": ["employee_22"],
+        "purpose": "Performance Review",
+        "date": "2023-09-29",
+        "startTime": "2023-09-29T16:00:00Z",
+        "endTime": "2023-09-29T16:30:00Z"
+      },
+      {
+        "id": "appt00000000011",
+        "roomId": "room00000000006",
+        "organizerId": "organizer_11",
+        "attendees": ["employee_23", "employee_24"],
+        "purpose": "Workshop Planning",
+        "date": "2023-09-30",
+        "startTime": "2023-09-30T14:00:00Z",
+        "endTime": "2023-09-30T15:30:00Z"
+      },
+      {
+        "id": "appt00000000012",
+        "roomId": "room00000000007",
+        "organizerId": "organizer_12",
+        "attendees": ["employee_25", "employee_26"],
+        "purpose": "Executive Meeting",
+        "date": "2023-10-01",
+        "startTime": "2023-10-01T11:00:00Z",
+        "endTime": "2023-10-01T12:00:00Z"
+      },
+      {
+        "id": "appt00000000013",
+        "roomId": "room00000000008",
+        "organizerId": "organizer_13",
+        "attendees": ["employee_27", "employee_28", "employee_29"],
+        "purpose": "Product Launch",
+        "date": "2023-10-02",
+        "startTime": "2023-10-02T09:00:00Z",
+        "endTime": "2023-10-02T10:30:00Z"
+      },
+      {
+        "id": "appt00000000014",
+        "roomId": "room00000000001",
+        "organizerId": "organizer_14",
+        "attendees": ["employee_30", "employee_31"],
+        "purpose": "Sales Meeting",
+        "date": "2023-10-03",
+        "startTime": "2023-10-03T13:00:00Z",
+        "endTime": "2023-10-03T14:00:00Z"
+      },
+      {
+        "id": "appt00000000015",
+        "roomId": "room00000000002",
+        "organizerId": "organizer_15",
+        "attendees": ["employee_32", "employee_33", "employee_34"],
+        "purpose": "Marketing Strategy",
+        "date": "2023-10-04",
+        "startTime": "2023-10-04T15:00:00Z",
+        "endTime": "2023-10-04T17:00:00Z"
       }
     ]
   }
