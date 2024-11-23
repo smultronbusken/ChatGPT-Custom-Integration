@@ -1,11 +1,11 @@
+
 openapi: 3.1.0
 info:
   title: Manufacturing Company Internal API
   version: 1.0.0
   description: API for managing products, orders, and meeting room bookings within the company.
 servers:
-  - url: https://api.company.com
-
+  - url: https://deno-hono-pocketbase.deno.dev
 paths:
   /products:
     get:
@@ -20,14 +20,14 @@ paths:
             type: string
           description: Filter products by category.
       responses:
-        '200':
+        "200":
           description: A list of products.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Product'
+                  $ref: "#/components/schemas/Product"
     post:
       summary: Create a new product
       operationId: createProduct
@@ -38,15 +38,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductInput'
+              $ref: "#/components/schemas/ProductInput"
       responses:
-        '201':
+        "201":
           description: Product created successfully.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Product'
-        '400':
+                $ref: "#/components/schemas/Product"
+        "400":
           description: Invalid input.
   /products/{productId}:
     get:
@@ -61,13 +61,13 @@ paths:
             type: string
           description: ID of the product to retrieve.
       responses:
-        '200':
+        "200":
           description: Product details retrieved successfully.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Product'
-        '404':
+                $ref: "#/components/schemas/Product"
+        "404":
           description: Product not found.
     put:
       summary: Update a product
@@ -86,17 +86,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductInput'
+              $ref: "#/components/schemas/ProductInput"
       responses:
-        '200':
+        "200":
           description: Product updated successfully.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Product'
-        '400':
+                $ref: "#/components/schemas/Product"
+        "400":
           description: Invalid input.
-        '404':
+        "404":
           description: Product not found.
     delete:
       summary: Delete a product
@@ -110,11 +110,10 @@ paths:
             type: string
           description: ID of the product to delete.
       responses:
-        '204':
+        "204":
           description: Product deleted successfully.
-        '404':
+        "404":
           description: Product not found.
-
   /orders:
     get:
       summary: List all orders
@@ -128,14 +127,14 @@ paths:
             type: string
           description: Filter orders by status.
       responses:
-        '200':
+        "200":
           description: A list of orders.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Order'
+                  $ref: "#/components/schemas/Order"
     post:
       summary: Create a new order
       operationId: createOrder
@@ -146,15 +145,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OrderInput'
+              $ref: "#/components/schemas/OrderInput"
       responses:
-        '201':
+        "201":
           description: Order created successfully.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Order'
-        '400':
+                $ref: "#/components/schemas/Order"
+        "400":
           description: Invalid input.
   /orders/{orderId}:
     get:
@@ -169,13 +168,13 @@ paths:
             type: string
           description: ID of the order to retrieve.
       responses:
-        '200':
+        "200":
           description: Order details retrieved successfully.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Order'
-        '404':
+                $ref: "#/components/schemas/Order"
+        "404":
           description: Order not found.
     put:
       summary: Update an order
@@ -194,17 +193,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OrderInput'
+              $ref: "#/components/schemas/OrderInput"
       responses:
-        '200':
+        "200":
           description: Order updated successfully.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Order'
-        '400':
+                $ref: "#/components/schemas/Order"
+        "400":
           description: Invalid input.
-        '404':
+        "404":
           description: Order not found.
     delete:
       summary: Delete an order
@@ -218,25 +217,24 @@ paths:
             type: string
           description: ID of the order to delete.
       responses:
-        '204':
+        "204":
           description: Order deleted successfully.
-        '404':
+        "404":
           description: Order not found.
-
   /meetingRooms:
     get:
       summary: List all meeting rooms
       operationId: listMeetingRooms
       description: Retrieve a list of all meeting rooms.
       responses:
-        '200':
+        "200":
           description: A list of meeting rooms.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/MeetingRoom'
+                  $ref: "#/components/schemas/MeetingRoom"
     post:
       summary: Add a new meeting room
       operationId: createMeetingRoom
@@ -247,15 +245,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MeetingRoomInput'
+              $ref: "#/components/schemas/MeetingRoomInput"
       responses:
-        '201':
+        "201":
           description: Meeting room created successfully.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MeetingRoom'
-        '400':
+                $ref: "#/components/schemas/MeetingRoom"
+        "400":
           description: Invalid input.
   /meetingRooms/{roomId}:
     get:
@@ -270,13 +268,13 @@ paths:
             type: string
           description: ID of the meeting room to retrieve.
       responses:
-        '200':
+        "200":
           description: Meeting room details retrieved successfully.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MeetingRoom'
-        '404':
+                $ref: "#/components/schemas/MeetingRoom"
+        "404":
           description: Meeting room not found.
     put:
       summary: Update a meeting room
@@ -295,17 +293,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MeetingRoomInput'
+              $ref: "#/components/schemas/MeetingRoomInput"
       responses:
-        '200':
+        "200":
           description: Meeting room updated successfully.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MeetingRoom'
-        '400':
+                $ref: "#/components/schemas/MeetingRoom"
+        "400":
           description: Invalid input.
-        '404':
+        "404":
           description: Meeting room not found.
     delete:
       summary: Delete a meeting room
@@ -319,11 +317,10 @@ paths:
             type: string
           description: ID of the meeting room to delete.
       responses:
-        '204':
+        "204":
           description: Meeting room deleted successfully.
-        '404':
+        "404":
           description: Meeting room not found.
-
   /appointments:
     get:
       summary: List all appointments
@@ -344,14 +341,14 @@ paths:
             format: date
           description: Filter appointments by date.
       responses:
-        '200':
+        "200":
           description: A list of appointments.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Appointment'
+                  $ref: "#/components/schemas/Appointment"
     post:
       summary: Schedule a new appointment
       operationId: createAppointment
@@ -362,17 +359,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AppointmentInput'
+              $ref: "#/components/schemas/AppointmentInput"
       responses:
-        '201':
+        "201":
           description: Appointment scheduled successfully.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Appointment'
-        '400':
+                $ref: "#/components/schemas/Appointment"
+        "400":
           description: Invalid input.
-        '409':
+        "409":
           description: Time slot not available.
   /appointments/{appointmentId}:
     get:
@@ -387,13 +384,13 @@ paths:
             type: string
           description: ID of the appointment to retrieve.
       responses:
-        '200':
+        "200":
           description: Appointment details retrieved successfully.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Appointment'
-        '404':
+                $ref: "#/components/schemas/Appointment"
+        "404":
           description: Appointment not found.
     put:
       summary: Update an appointment
@@ -412,19 +409,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AppointmentInput'
+              $ref: "#/components/schemas/AppointmentInput"
       responses:
-        '200':
+        "200":
           description: Appointment updated successfully.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Appointment'
-        '400':
+                $ref: "#/components/schemas/Appointment"
+        "400":
           description: Invalid input.
-        '404':
+        "404":
           description: Appointment not found.
-        '409':
+        "409":
           description: Time slot not available.
     delete:
       summary: Cancel an appointment
@@ -438,11 +435,10 @@ paths:
             type: string
           description: ID of the appointment to cancel.
       responses:
-        '204':
+        "204":
           description: Appointment cancelled successfully.
-        '404':
+        "404":
           description: Appointment not found.
-
 components:
   schemas:
     Product:
