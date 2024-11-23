@@ -4,9 +4,12 @@ import PocketBase from "pocketbase"
 import { Hono } from "@hono/hono"
 import { basicAuth } from "@hono/hono/basic-auth"
 import { logger } from "@hono/hono/logger"
-import productRoute from "./routes/product.ts";
+import productRoute from "./routes/productRoute.ts";
 import { pocketbaseMiddleware } from "./middleware/pocketbase.ts";
 import { Env } from "./types.ts";
+import orderRoute from "./routes/orderRoute.ts";
+import meetingRoomRoute from "./routes/meetingRoomRoute.ts";
+import appointmentRoute from "./routes/appointmentRoute.ts";
 
 const pbClient = await setUpPocketbase()
 const app = setUpHono()
@@ -16,6 +19,9 @@ Deno.serve({ port: 8080 }, app.fetch)
 
 function setUpEndpoints(app: Hono<Env>) {
     app.route('/product', productRoute())
+    app.route('/appointments', appointmentRoute())
+    app.route('/meetingRooms', meetingRoomRoute())
+    app.route('/orders', orderRoute())
 }
 
 function setUpHono() {
