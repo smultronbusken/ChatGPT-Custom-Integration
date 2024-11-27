@@ -35,8 +35,6 @@ function orderRoute(): Hono<Env> {
     }
   });
 
-  // Similar PUT and DELETE endpoints...
-
   return app;
 }
 
