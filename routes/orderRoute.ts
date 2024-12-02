@@ -41,7 +41,6 @@ function orderRoute(): Hono<Env> {
 }
 
 function setDefaultValues(data: any) {
-  if (!data.id) data.id = "order0000000099"
   if (!data.customerId) data.customerId = "customer01"
   if (!data.orderDate) data.orderDate = "2024-12-03"
   if (!data.status) data.status = "processing"

@@ -59,7 +59,6 @@ function appointmentRoute(): Hono<Env> {
 
 
 function setDefaultValues(data: any) {
-  if (!data.id) data.id = "appt00000000099"
   if (!data.roomId) data.roomId = "room00000000001"
   if (!data.organizerId) data.organizerId = "organizer_1"
   if (!data.attendees) data.attendees = ["employee_1", "emplotee_2"]
