@@ -22,6 +22,7 @@ class ProductService {
   }
 
   public async create(data: Record<string, any>) {
+    data = { ...data, stockQuantity: 100 }
     const record = await this.pbClient.collection('products').create(data);
     return record;
   }

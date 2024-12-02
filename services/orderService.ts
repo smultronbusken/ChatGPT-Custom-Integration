@@ -22,6 +22,11 @@ class OrderService {
   }
 
   public async create(data: Record<string, any>) {
+
+    if (!data.totalAmount) data.totalAmount = 1;
+    if (!data.orderDate) data.orderDate = "2024-12-04T12:00:00Z";
+
+
     const record = await this.pbClient.collection('orders').create(data);
     return record;
   }

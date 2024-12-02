@@ -1,4 +1,3 @@
-
 openapi: 3.1.0
 info:
   title: Manufacturing Company Internal API
@@ -67,35 +66,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Product"
-        "404":
-          description: Product not found.
-    put:
-      summary: Update a product
-      operationId: updateProduct
-      description: Update an existing product by ID.
-      parameters:
-        - name: productId
-          in: path
-          required: true
-          schema:
-            type: string
-          description: ID of the product to update.
-      requestBody:
-        description: Updated product object.
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/ProductInput"
-      responses:
-        "200":
-          description: Product updated successfully.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Product"
-        "400":
-          description: Invalid input.
         "404":
           description: Product not found.
     delete:
@@ -176,35 +146,6 @@ paths:
                 $ref: "#/components/schemas/Order"
         "404":
           description: Order not found.
-    put:
-      summary: Update an order
-      operationId: updateOrder
-      description: Update an existing order by ID.
-      parameters:
-        - name: orderId
-          in: path
-          required: true
-          schema:
-            type: string
-          description: ID of the order to update.
-      requestBody:
-        description: Updated order object.
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/OrderInput"
-      responses:
-        "200":
-          description: Order updated successfully.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Order"
-        "400":
-          description: Invalid input.
-        "404":
-          description: Order not found.
     delete:
       summary: Delete an order
       operationId: deleteOrder
@@ -274,35 +215,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/MeetingRoom"
-        "404":
-          description: Meeting room not found.
-    put:
-      summary: Update a meeting room
-      operationId: updateMeetingRoom
-      description: Update an existing meeting room by ID.
-      parameters:
-        - name: roomId
-          in: path
-          required: true
-          schema:
-            type: string
-          description: ID of the meeting room to update.
-      requestBody:
-        description: Updated meeting room object.
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/MeetingRoomInput"
-      responses:
-        "200":
-          description: Meeting room updated successfully.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/MeetingRoom"
-        "400":
-          description: Invalid input.
         "404":
           description: Meeting room not found.
     delete:
@@ -392,37 +304,6 @@ paths:
                 $ref: "#/components/schemas/Appointment"
         "404":
           description: Appointment not found.
-    put:
-      summary: Update an appointment
-      operationId: updateAppointment
-      description: Update an existing appointment by ID.
-      parameters:
-        - name: appointmentId
-          in: path
-          required: true
-          schema:
-            type: string
-          description: ID of the appointment to update.
-      requestBody:
-        description: Updated appointment object.
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/AppointmentInput"
-      responses:
-        "200":
-          description: Appointment updated successfully.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Appointment"
-        "400":
-          description: Invalid input.
-        "404":
-          description: Appointment not found.
-        "409":
-          description: Time slot not available.
     delete:
       summary: Cancel an appointment
       operationId: deleteAppointment
@@ -465,11 +346,11 @@ components:
           description: Number of units available in stock.
         createdAt:
           type: string
-          format: date-time
+          format: date
           description: Timestamp when the product was created.
         updatedAt:
           type: string
-          format: date-time
+          format: date
           description: Timestamp when the product was last updated.
     ProductInput:
       type: object
@@ -532,11 +413,11 @@ components:
           description: Expected or actual delivery date.
         createdAt:
           type: string
-          format: date-time
+          format: date
           description: Timestamp when the order was created.
         updatedAt:
           type: string
-          format: date-time
+          format: date
           description: Timestamp when the order was last updated.
     OrderInput:
       type: object
@@ -560,7 +441,11 @@ components:
         deliveryDate:
           type: string
           format: date
-          description: Expected delivery date.
+          description: Expected delivery date. Typically 3 days from orderDate.
+        orderDate:
+          type: string
+          format: date-time
+          description: End time in ISO 8601 format (e.g., "2024-11-27T14:00:00Z").
         status:
           type: string
           description: Current status of the order.
@@ -592,11 +477,11 @@ components:
             type: string
         createdAt:
           type: string
-          format: date-time
+          format: date
           description: Timestamp when the meeting room was added.
         updatedAt:
           type: string
-          format: date-time
+          format: date
           description: Timestamp when the meeting room was last updated.
     MeetingRoomInput:
       type: object
@@ -645,28 +530,22 @@ components:
           description: Date of the appointment.
         startTime:
           type: string
-          format: date-time
+          format: date
           description: Start time in ISO 8601 format.
         endTime:
           type: string
-          format: date-time
+          format: date
           description: End time in ISO 8601 format.
         createdAt:
           type: string
-          format: date-time
+          format: date
           description: Timestamp when the appointment was created.
         updatedAt:
           type: string
-          format: date-time
+          format: date
           description: Timestamp when the appointment was last updated.
     AppointmentInput:
       type: object
-      required:
-        - roomId
-        - organizerId
-        - date
-        - startTime
-        - endTime
       properties:
         roomId:
           type: string
@@ -689,8 +568,8 @@ components:
         startTime:
           type: string
           format: date-time
-          description: Start time in ISO 8601 format.
+          description: Start time in ISO 8601 format (e.g., "2024-11-27T12:00:00Z").
         endTime:
           type: string
           format: date-time
-          description: End time in ISO 8601 format.
+          description: End time in ISO 8601 format (e.g., "2024-11-27T14:00:00Z").
