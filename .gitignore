@@ -3,6 +3,8 @@
 *.swp
 .env
 
+custom-gpt
+
 notes
 
 /.cargo_home/
