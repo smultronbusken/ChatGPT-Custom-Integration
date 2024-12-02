@@ -19,29 +19,9 @@ function orderRoute(): Hono<Env> {
 
   app.post('/', async (c) => {
     const orderService = new OrderService(c);
-    const data = await c.req.json();
+    let data = await c.req.json();
 
-
-    /*
-      {
-        "id": "order0000000001",
-        "customerId": "customer_1",
-        "orderDate": "2023-09-15",
-        "status": "processing",
-        "items": ["product00000001", "product00000002"],
-        "totalAmount": 149.98,
-        "deliveryDate": "2023-09-20"
-      },
-    */
-
-    if (!data.id) data.id = "order0000000099"
-    if (!data.customerId) data.customerId = "customer01"
-    if (!data.orderDate) data.orderDate = "2024-12-03"
-    if (!data.status) data.status = "processing"
-    if (!data.items) data.items = ["product00000001"]
-    if (!data.totalAmount) data.totalAmount = 149.98
-    if (!data.deliveryDate) data.deliveryDate = "2024-12-07"
-    
+    data = setDefaultValues(data)
 
     // Validate required fields
     if (!data.customerId || !data.items || !Array.isArray(data.items)) {
@@ -58,6 +38,17 @@ function orderRoute(): Hono<Env> {
   });
 
   return app;
+}
+
+function setDefaultValues(data: any) {
+  if (!data.id) data.id = "order0000000099"
+  if (!data.customerId) data.customerId = "customer01"
+  if (!data.orderDate) data.orderDate = "2024-12-03"
+  if (!data.status) data.status = "processing"
+  if (!data.items) data.items = ["product00000001"]
+  if (!data.totalAmount) data.totalAmount = 149.98
+  if (!data.deliveryDate) data.deliveryDate = "2024-12-07"
+  return data;
 }
 
 export default orderRoute;

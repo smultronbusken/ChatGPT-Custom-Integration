@@ -19,7 +19,9 @@ function appointmentRoute(): Hono<Env> {
 
   app.post('/', async (c) => {
     const appointmentService = new AppointmentService(c);
-    const data = await c.req.json();
+    let data = await c.req.json();
+
+    data = setDefaultValues(data)
 
     // Validate required fields
     if (!data.roomId || !data.organizerId || !data.date || !data.startTime || !data.endTime) {
@@ -54,5 +56,19 @@ function appointmentRoute(): Hono<Env> {
 
   return app;
 }
+
+
+function setDefaultValues(data: any) {
+  if (!data.id) data.id = "appt00000000099"
+  if (!data.roomId) data.roomId = "room00000000001"
+  if (!data.organizerId) data.organizerId = "organizer_1"
+  if (!data.attendees) data.attendees = ["employee_1", "emplotee_2"]
+  if (!data.purpose) data.purpose = "Purpose"
+  if (!data.date) data.date = "2023-12-02"
+  if (!data.startTime) data.startTime = "2024-12-02T10:00:00Z"
+  if (!data.endTime) data.endTime = "2024-12-02T12:00:00Z"
+  return data;
+}
+
 
 export default appointmentRoute;
