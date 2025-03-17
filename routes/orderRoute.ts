@@ -46,7 +46,7 @@ function setDefaultValues(data: any) {
   if (!data.status) data.status = "processing"
   if (!data.items) data.items = ["product00000001"]
   if (!data.totalAmount) data.totalAmount = 149.98
-  if (!data.deliveryDate) data.deliveryDate = "2024-12-07"
+  if (!data.deliveryDate) data.deliveryDate = "2025-03-19"
   return data;
 }
 
